@@ -61,3 +61,32 @@ button {
 .record-list {
 	margin-top: 3rem;
 }
+
+.record {
+	width: 100%;
+	background-color: rgb(202, 202, 202);
+	border-radius: 2px;
+	padding: 0.4rem;
+	margin-bottom: 0.5rem;
+}
+
+.record > span {
+	margin-right: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+	button {
+		height: 2.2rem;
+	}
+
+	.input-fields {
+		flex-direction: column;
+		height: 5rem;
+	}
+
+	.search-input-button {
+		width: 100%;
+		margin-bottom: auto;
+		height: 2.2rem;
+	}
+}
