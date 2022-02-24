@@ -24,8 +24,7 @@ const initChildRecords = async () => {
 	}
 };
 
-initChildRecords();
-
+// Code for setting list in alphevetical order
 const setAlphebetically = () => {
 	const key = (a) => a.querySelector(".record-name").textContent.trim();
 
@@ -33,3 +32,30 @@ const setAlphebetically = () => {
 		.sort((a, b) => key(a).localeCompare(key(b)))
 		.forEach((child) => recordList.appendChild(child));
 };
+
+// Code for searching specific names
+const searchForename = () => {
+	const searchParam = document.getElementById("search-box").value;
+	// If user doesn't specify anything then it'll load all children
+	if (!searchParam) {
+		Array.from(recordList.children).forEach((childNode) => {
+			childNode.style.display = "block";
+		});
+	} else {
+		Array.from(recordList.children).forEach((child) =>
+			child.innerText.toLowerCase().includes(searchParam.toLowerCase())
+				? (child.style.display = "block")
+				: (child.style.display = "none")
+		);
+	}
+};
+
+// Calling on initalising of records at page load
+initChildRecords();
+
+// If the enter key is pressed then it'll run the searchForename function to aid UX
+document.addEventListener("keyup", function (event) {
+	if (event.code === "Enter") {
+		searchForename();
+	}
+});
