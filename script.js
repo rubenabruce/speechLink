@@ -25,3 +25,11 @@ const initChildRecords = async () => {
 };
 
 initChildRecords();
+
+const setAlphebetically = () => {
+	const key = (a) => a.querySelector(".record-name").textContent.trim();
+
+	Array.from(recordList.children)
+		.sort((a, b) => key(a).localeCompare(key(b)))
+		.forEach((child) => recordList.appendChild(child));
+};
